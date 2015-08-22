@@ -10,6 +10,6 @@
 
 @interface SVViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end

@@ -21,12 +21,14 @@ typedef NS_ENUM(NSUInteger, SVPullToRefreshPosition) {
     SVPullToRefreshPositionBottom,
 };
 
-- (void)addPullToRefreshWithActionHandler:(void (^)(void))actionHandler;
 - (void)addPullToRefreshWithActionHandler:(void (^)(void))actionHandler position:(SVPullToRefreshPosition)position;
-- (void)triggerPullToRefresh;
+- (void)triggerPullToRefreshTop;
+- (void)triggerPullToRefreshBottom;
 
-@property (nonatomic, strong, readonly) SVPullToRefreshView *pullToRefreshView;
-@property (nonatomic, assign) BOOL showsPullToRefresh;
+@property (nonatomic, strong, readonly) SVPullToRefreshView *pullToRefreshViewTop;
+@property (nonatomic, strong, readonly) SVPullToRefreshView *pullToRefreshViewBottom;
+@property (nonatomic, assign) BOOL showsPullToRefreshTop;
+@property (nonatomic, assign) BOOL showsPullToRefreshBottom;
 
 @end
 
@@ -63,8 +65,5 @@ extern CGFloat const SVPullToRefreshViewHeight;
 @property (nonatomic, strong, readonly) UILabel *dateLabel DEPRECATED_ATTRIBUTE;
 @property (nonatomic, strong) NSDate *lastUpdatedDate DEPRECATED_ATTRIBUTE;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter DEPRECATED_ATTRIBUTE;
-
-// deprecated; use [self.scrollView triggerPullToRefresh] instead
-- (void)triggerRefresh DEPRECATED_ATTRIBUTE;
 
 @end

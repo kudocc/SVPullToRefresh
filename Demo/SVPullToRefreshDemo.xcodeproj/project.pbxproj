@@ -15,7 +15,6 @@
 		22E0D9251545EE5B00BB6BB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E0D9241545EE5B00BB6BB5 /* main.m */; };
 		22E0D9291545EE5B00BB6BB5 /* SVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E0D9281545EE5B00BB6BB5 /* SVAppDelegate.m */; };
 		22E0D92C1545EE5B00BB6BB5 /* SVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E0D92B1545EE5B00BB6BB5 /* SVViewController.m */; };
-		22E0D92F1545EE5B00BB6BB5 /* SVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E0D92D1545EE5B00BB6BB5 /* SVViewController.xib */; };
 		22E0D93D1545EE7600BB6BB5 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E0D93B1545EE7600BB6BB5 /* UIScrollView+SVPullToRefresh.m */; };
 		22E0D9411545EE9000BB6BB5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E0D9401545EE9000BB6BB5 /* QuartzCore.framework */; };
 		22E0D94B1545F63300BB6BB5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 22E0D94A1545F63300BB6BB5 /* README.md */; };
@@ -40,7 +39,6 @@
 		22E0D9281545EE5B00BB6BB5 /* SVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVAppDelegate.m; sourceTree = "<group>"; };
 		22E0D92A1545EE5B00BB6BB5 /* SVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVViewController.h; sourceTree = "<group>"; };
 		22E0D92B1545EE5B00BB6BB5 /* SVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVViewController.m; sourceTree = "<group>"; };
-		22E0D92E1545EE5B00BB6BB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SVViewController.xib; sourceTree = "<group>"; };
 		22E0D93A1545EE7600BB6BB5 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		22E0D93B1545EE7600BB6BB5 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		22E0D9401545EE9000BB6BB5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -102,7 +100,6 @@
 				22E0D9281545EE5B00BB6BB5 /* SVAppDelegate.m */,
 				22E0D92A1545EE5B00BB6BB5 /* SVViewController.h */,
 				22E0D92B1545EE5B00BB6BB5 /* SVViewController.m */,
-				22E0D92D1545EE5B00BB6BB5 /* SVViewController.xib */,
 				22E0D91F1545EE5B00BB6BB5 /* Supporting Files */,
 			);
 			name = Demo;
@@ -162,7 +159,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SV;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Home;
 			};
 			buildConfigurationList = 22E0D90E1545EE5B00BB6BB5 /* Build configuration list for PBXProject "SVPullToRefreshDemo" */;
@@ -188,7 +185,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E0D9231545EE5B00BB6BB5 /* InfoPlist.strings in Resources */,
-				22E0D92F1545EE5B00BB6BB5 /* SVViewController.xib in Resources */,
 				22E0D94B1545F63300BB6BB5 /* README.md in Resources */,
 				22FDEC971639082E00DB53A8 /* Default-568h@2x.png in Resources */,
 				2214365616B48FD70057C96E /* SVPullToRefresh.podspec in Resources */,
@@ -221,14 +217,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		22E0D92D1545EE5B00BB6BB5 /* SVViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				22E0D92E1545EE5B00BB6BB5 /* en */,
-			);
-			name = SVViewController.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -242,11 +230,14 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -277,10 +268,13 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -302,7 +296,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SVPullToRefreshDemo/SVPullToRefreshDemo-Prefix.pch";
 				INFOPLIST_FILE = "SVPullToRefreshDemo/SVPullToRefreshDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -314,7 +308,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SVPullToRefreshDemo/SVPullToRefreshDemo-Prefix.pch";
 				INFOPLIST_FILE = "SVPullToRefreshDemo/SVPullToRefreshDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

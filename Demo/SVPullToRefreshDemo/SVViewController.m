@@ -43,30 +43,46 @@
 @end
 
 @implementation SVViewController
+
 @synthesize tableView = tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+    NSLog(@"%@, %@", NSStringFromSelector(_cmd), NSStringFromCGRect(self.view.frame));
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)) style:UITableViewStylePlain];
+    [self.view addSubview:tableView];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    
     [self setupDataSource];
-    
-    __weak SVViewController *weakSelf = self;
-    
-    // setup pull-to-refresh
-    [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakSelf insertRowAtTop];
-    }];
-    UIPullToRefreshCustomView *customView = [[UIPullToRefreshCustomView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), SVPullToRefreshViewHeight)];
-    [self.tableView.pullToRefreshView setCustomView:customView forState:SVPullToRefreshStateLoading];
-        
-    // setup infinite scrolling
-    [self.tableView addInfiniteScrollingWithActionHandler:^{
-        [weakSelf insertRowAtBottom];
-    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [tableView triggerPullToRefresh];
+//    [tableView triggerPullToRefreshTop];
+}
+
+- (void)viewDidLayoutSubviews {
+    NSLog(@"%@, %@", NSStringFromSelector(_cmd), NSStringFromCGRect(self.view.frame));
+    
+    __weak SVViewController *weakSelf = self;
+    // setup pull-to-refresh
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [weakSelf insertRowAtTop];
+    } position:SVPullToRefreshPositionTop];
+    
+    UIPullToRefreshCustomView *customView = [[UIPullToRefreshCustomView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), SVPullToRefreshViewHeight)];
+    [self.tableView.pullToRefreshViewTop setCustomView:customView
+                                              forState:SVPullToRefreshStateLoading];
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [weakSelf insertRowAtBottom];
+    } position:SVPullToRefreshPositionBottom];
+    
+    // setup infinite scrolling
+//    [self.tableView addInfiniteScrollingWithActionHandler:^{
+//        [weakSelf insertRowAtBottom];
+//    }];
 }
 
 #pragma mark - Actions
@@ -87,8 +103,7 @@
         [weakSelf.dataSource insertObject:[NSDate date] atIndex:0];
         [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
         [weakSelf.tableView endUpdates];
-        
-        [weakSelf.tableView.pullToRefreshView stopAnimating];
+        [weakSelf.tableView.pullToRefreshViewTop stopAnimating];
     });
 }
 
@@ -104,7 +119,7 @@
         [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.dataSource.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
         [weakSelf.tableView endUpdates];
         
-        [weakSelf.tableView.infiniteScrollingView stopAnimating];
+        [weakSelf.tableView.pullToRefreshViewBottom stopAnimating];
     });
 }
 #pragma mark -
