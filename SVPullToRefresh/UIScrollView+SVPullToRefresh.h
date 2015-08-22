@@ -12,6 +12,7 @@
 
 
 @class SVPullToRefreshView;
+@protocol SVPullToRefreshCustomViewProtocol;
 
 @interface UIScrollView (SVPullToRefresh)
 
@@ -37,6 +38,8 @@ typedef NS_ENUM(NSUInteger, SVPullToRefreshState) {
     SVPullToRefreshStateAll = 10
 };
 
+extern CGFloat const SVPullToRefreshViewHeight;
+
 @interface SVPullToRefreshView : UIView
 
 @property (nonatomic, strong) UIColor *arrowColor;
@@ -51,7 +54,7 @@ typedef NS_ENUM(NSUInteger, SVPullToRefreshState) {
 
 - (void)setTitle:(NSString *)title forState:(SVPullToRefreshState)state;
 - (void)setSubtitle:(NSString *)subtitle forState:(SVPullToRefreshState)state;
-- (void)setCustomView:(UIView *)view forState:(SVPullToRefreshState)state;
+- (void)setCustomView:(UIView<SVPullToRefreshCustomViewProtocol> *)view forState:(SVPullToRefreshState)state;
 
 - (void)startAnimating;
 - (void)stopAnimating;

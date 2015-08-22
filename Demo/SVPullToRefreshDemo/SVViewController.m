@@ -9,6 +9,33 @@
 #import "SVViewController.h"
 #import "SVPullToRefresh.h"
 
+@interface UIPullToRefreshCustomView : UIView <SVPullToRefreshCustomViewProtocol>
+@property (nonatomic, strong) UIActivityIndicatorView *animateView;
+@end
+
+@implementation UIPullToRefreshCustomView
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor grayColor];
+        _animateView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        _animateView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+        [self addSubview:_animateView];
+    }
+    return self;
+}
+
+- (void)customViewShouldBeginAnimating {
+    [_animateView startAnimating];
+}
+
+- (void)customViewShouldStopAnimating {
+    [_animateView stopAnimating];
+}
+
+@end
+
 @interface SVViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -28,6 +55,8 @@
     [self.tableView addPullToRefreshWithActionHandler:^{
         [weakSelf insertRowAtTop];
     }];
+    UIPullToRefreshCustomView *customView = [[UIPullToRefreshCustomView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), SVPullToRefreshViewHeight)];
+    [self.tableView.pullToRefreshView setCustomView:customView forState:SVPullToRefreshStateLoading];
         
     // setup infinite scrolling
     [self.tableView addInfiniteScrollingWithActionHandler:^{
@@ -36,6 +65,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [tableView triggerPullToRefresh];
 }
 

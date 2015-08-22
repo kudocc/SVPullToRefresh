@@ -9,12 +9,13 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "UIScrollView+SVPullToRefresh.h"
+#import "SVPullToRefreshCustomViewProtocol.h"
 
 //fequal() and fequalzro() from http://stackoverflow.com/a/1614761/184130
 #define fequal(a,b) (fabs((a) - (b)) < FLT_EPSILON)
 #define fequalzero(a) (fabs(a) < FLT_EPSILON)
 
-static CGFloat const SVPullToRefreshViewHeight = 60;
+CGFloat const SVPullToRefreshViewHeight = 60;
 
 @interface SVPullToRefreshArrow : UIView
 
@@ -216,7 +217,7 @@ static char UIScrollViewPullToRefreshView;
             [otherView removeFromSuperview];
     }
     
-    id customView = [self.viewForState objectAtIndex:self.state];
+    UIView<SVPullToRefreshCustomViewProtocol> *customView = [self.viewForState objectAtIndex:self.state];
     BOOL hasCustomView = [customView isKindOfClass:[UIView class]];
     
     self.titleLabel.hidden = hasCustomView;
@@ -228,6 +229,24 @@ static char UIScrollViewPullToRefreshView;
         CGRect viewBounds = [customView bounds];
         CGPoint origin = CGPointMake(roundf((self.bounds.size.width-viewBounds.size.width)/2), roundf((self.bounds.size.height-viewBounds.size.height)/2));
         [customView setFrame:CGRectMake(origin.x, origin.y, viewBounds.size.width, viewBounds.size.height)];
+        
+        switch (self.state) {
+            case SVPullToRefreshStateAll:
+            case SVPullToRefreshStateStopped:
+                if ([customView respondsToSelector:@selector(customViewShouldStopAnimating)]) {
+                    [customView customViewShouldStopAnimating];
+                }
+                break;
+                
+            case SVPullToRefreshStateTriggered:
+                break;
+                
+            case SVPullToRefreshStateLoading:
+                if ([customView respondsToSelector:@selector(customViewShouldBeginAnimating)]) {
+                    [customView customViewShouldBeginAnimating];
+                }
+                break;
+        }
     }
     else {
         switch (self.state) {
@@ -542,7 +561,7 @@ static char UIScrollViewPullToRefreshView;
     [self setNeedsLayout];
 }
 
-- (void)setCustomView:(UIView *)view forState:(SVPullToRefreshState)state {
+- (void)setCustomView:(UIView<SVPullToRefreshCustomViewProtocol> *)view forState:(SVPullToRefreshState)state {
     id viewPlaceholder = view;
     
     if(!viewPlaceholder)
