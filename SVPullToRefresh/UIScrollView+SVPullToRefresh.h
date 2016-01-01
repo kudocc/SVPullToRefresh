@@ -10,6 +10,9 @@
 #import <UIKit/UIKit.h>
 #import <AvailabilityMacros.h>
 
+/**
+ if the navigationBar is translucent, we can see this refresh control through navigationBar, so it's not good place to use it
+ */
 
 @class SVPullToRefreshView;
 @protocol SVPullToRefreshCustomViewProtocol;

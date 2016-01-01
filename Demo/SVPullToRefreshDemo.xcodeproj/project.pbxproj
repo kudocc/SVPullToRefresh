@@ -20,6 +20,10 @@
 		22E0D94B1545F63300BB6BB5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 22E0D94A1545F63300BB6BB5 /* README.md */; };
 		22FDEC971639082E00DB53A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FDEC961639082E00DB53A8 /* Default-568h@2x.png */; };
 		22FDEC9D16390CC800DB53A8 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 2288146016047C06005C6461 /* UIScrollView+SVInfiniteScrolling.m */; };
+		A7223D3F1C361D01004B38B7 /* SVBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7223D3E1C361D01004B38B7 /* SVBaseViewController.m */; };
+		A7223D421C361D30004B38B7 /* SVViewControllerBelowIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = A7223D411C361D30004B38B7 /* SVViewControllerBelowIOS7.m */; };
+		A7223D451C361D49004B38B7 /* SVViewControllerAboveIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = A7223D441C361D49004B38B7 /* SVViewControllerAboveIOS7.m */; };
+		A7223D481C3623D8004B38B7 /* SVMacroDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = A7223D471C3623D8004B38B7 /* SVMacroDefine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,14 @@
 		22E0D9401545EE9000BB6BB5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		22E0D94A1545F63300BB6BB5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		22FDEC961639082E00DB53A8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		A7223D3D1C361D01004B38B7 /* SVBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVBaseViewController.h; sourceTree = "<group>"; };
+		A7223D3E1C361D01004B38B7 /* SVBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVBaseViewController.m; sourceTree = "<group>"; };
+		A7223D401C361D30004B38B7 /* SVViewControllerBelowIOS7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVViewControllerBelowIOS7.h; sourceTree = "<group>"; };
+		A7223D411C361D30004B38B7 /* SVViewControllerBelowIOS7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVViewControllerBelowIOS7.m; sourceTree = "<group>"; };
+		A7223D431C361D49004B38B7 /* SVViewControllerAboveIOS7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVViewControllerAboveIOS7.h; sourceTree = "<group>"; };
+		A7223D441C361D49004B38B7 /* SVViewControllerAboveIOS7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVViewControllerAboveIOS7.m; sourceTree = "<group>"; };
+		A7223D461C3623D8004B38B7 /* SVMacroDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVMacroDefine.h; sourceTree = "<group>"; };
+		A7223D471C3623D8004B38B7 /* SVMacroDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVMacroDefine.m; sourceTree = "<group>"; };
 		A75410091B8829E700BF674B /* SVPullToRefreshCustomViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefreshCustomViewProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,10 +108,18 @@
 		22E0D91E1545EE5B00BB6BB5 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				A7223D461C3623D8004B38B7 /* SVMacroDefine.h */,
+				A7223D471C3623D8004B38B7 /* SVMacroDefine.m */,
 				22E0D9271545EE5B00BB6BB5 /* SVAppDelegate.h */,
 				22E0D9281545EE5B00BB6BB5 /* SVAppDelegate.m */,
 				22E0D92A1545EE5B00BB6BB5 /* SVViewController.h */,
 				22E0D92B1545EE5B00BB6BB5 /* SVViewController.m */,
+				A7223D3D1C361D01004B38B7 /* SVBaseViewController.h */,
+				A7223D3E1C361D01004B38B7 /* SVBaseViewController.m */,
+				A7223D401C361D30004B38B7 /* SVViewControllerBelowIOS7.h */,
+				A7223D411C361D30004B38B7 /* SVViewControllerBelowIOS7.m */,
+				A7223D431C361D49004B38B7 /* SVViewControllerAboveIOS7.h */,
+				A7223D441C361D49004B38B7 /* SVViewControllerAboveIOS7.m */,
 				22E0D91F1545EE5B00BB6BB5 /* Supporting Files */,
 			);
 			name = Demo;
@@ -160,7 +180,7 @@
 			attributes = {
 				CLASSPREFIX = SV;
 				LastUpgradeCheck = 0640;
-				ORGANIZATIONNAME = Home;
+				ORGANIZATIONNAME = "https://github.com/kudocc";
 			};
 			buildConfigurationList = 22E0D90E1545EE5B00BB6BB5 /* Build configuration list for PBXProject "SVPullToRefreshDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -199,9 +219,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E0D9251545EE5B00BB6BB5 /* main.m in Sources */,
+				A7223D421C361D30004B38B7 /* SVViewControllerBelowIOS7.m in Sources */,
+				A7223D481C3623D8004B38B7 /* SVMacroDefine.m in Sources */,
 				22E0D9291545EE5B00BB6BB5 /* SVAppDelegate.m in Sources */,
 				22E0D92C1545EE5B00BB6BB5 /* SVViewController.m in Sources */,
 				22E0D93D1545EE7600BB6BB5 /* UIScrollView+SVPullToRefresh.m in Sources */,
+				A7223D451C361D49004B38B7 /* SVViewControllerAboveIOS7.m in Sources */,
+				A7223D3F1C361D01004B38B7 /* SVBaseViewController.m in Sources */,
 				22FDEC9D16390CC800DB53A8 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
