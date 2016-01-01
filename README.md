@@ -1,3 +1,5 @@
+Add supporting to iOS 7 and above, see the demo code to learn how to use it.
+
 # SVPullToRefresh + SVInfiniteScrolling
 
 These UIScrollView categories makes it super easy to add pull-to-refresh and infinite scrolling fonctionalities to any UIScrollView (or any of its subclass). Instead of relying on delegates and/or subclassing `UIViewController`, SVPullToRefresh uses the Objective-C runtime to add the following 3 methods to `UIScrollView`:
@@ -9,10 +11,6 @@ These UIScrollView categories makes it super easy to add pull-to-refresh and inf
 ```
 
 ## Installation
-
-### From CocoaPods
-
-Add `pod 'SVPullToRefresh'` to your Podfile or `pod 'SVPullToRefresh', :head` if you're feeling adventurous.
 
 ### Manually
 
