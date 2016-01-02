@@ -391,8 +391,8 @@ static char UIScrollViewPullToRefreshViewBottom;
 }
 
 - (void)scrollViewDidScroll:(CGPoint)contentOffset {
-    NSString *type = _position == SVPullToRefreshPositionTop ? @"SVPullToRefreshPositionTop" : @"SVPullToRefreshPositionBottom";
-    NSLog(@"type:%@, self frame:%@, scrollView bounds:%@, offset:%@, contentInset:%@", type, NSStringFromCGRect(self.frame), NSStringFromCGRect(self.scrollView.bounds), NSStringFromCGPoint(contentOffset), NSStringFromUIEdgeInsets(self.scrollView.contentInset));
+//    NSString *type = _position == SVPullToRefreshPositionTop ? @"SVPullToRefreshPositionTop" : @"SVPullToRefreshPositionBottom";
+//    NSLog(@"type:%@, self frame:%@, scrollView bounds:%@, offset:%@, contentInset:%@", type, NSStringFromCGRect(self.frame), NSStringFromCGRect(self.scrollView.bounds), NSStringFromCGPoint(contentOffset), NSStringFromUIEdgeInsets(self.scrollView.contentInset));
     
     if(self.state != SVPullToRefreshStateLoading) {
         CGFloat scrollOffsetThreshold = 0;
@@ -713,8 +713,6 @@ NSString *stringState(SVPullToRefreshState state) {
                                  self.scrollView.contentInset = currentInsets;
                              }
                              completion:^(BOOL finished) {
-                                 NSLog(@"animation finished:%d", finished);
-                                 
                                  if (self.state != SVPullToRefreshStateAll &&
                                      self.state != SVPullToRefreshStateStopped) {
                                      return;
